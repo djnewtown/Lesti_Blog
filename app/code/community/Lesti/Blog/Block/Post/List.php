@@ -143,6 +143,7 @@ class Lesti_Blog_Block_Post_List extends Mage_Core_Block_Template
         if (! $this->_posts) {
             $this->_posts = Mage::getModel('blog/post')->getCollection();
             $this->_posts->addStoreFilter(Mage::app()->getStore()->getId())
+                ->addFieldToFilter('is_active', array( 'eq' => 1) )
                 ->addAuthorToResult()
                 ->addCategoryIdToResult()
                 ->addTagIdToResult()
